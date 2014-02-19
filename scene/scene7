@@ -1,0 +1,38 @@
+scene
+	name
+		scene7
+	camera
+		origin
+			0.0
+			0.0
+			-2500.0
+	render
+		mlx_all_objects
+			1080
+			800
+			60
+	Object
+		name
+			sphere
+		inter
+			origin
+				0.0
+				0.0
+				0.0
+			sphere
+				100
+		color
+			0xFF
+			0x00
+			0x00
+	Light
+		origin
+			400.0		//	X		/*
+			-645.0		//	Y		**		origin
+			-300.0		//	Z		*/
+		coefficient
+			0.8			//	intesity
+		color
+			0x00
+			0xFF
+			0x00

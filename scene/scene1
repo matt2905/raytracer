@@ -1,0 +1,27 @@
+scene
+	name
+		scene1
+	camera
+		origin
+			0.0			//	X		/*
+			0.0			//	Y		**		origin
+			-2500.0		//	Z		*/
+	render
+		mlx_all_objects
+			1080		//	Width
+			800			//	Height
+			60			//	Fov
+	Object
+		name
+			sphere
+		inter
+			origin
+				0.0		//	X		/*
+				0.0		//	Y		**		origin
+				0.0		//	Z		*/
+			sphere
+				100		//	ray
+		color
+			0xFF		//	R		/*
+			0x00		//	G		**		0 to 255
+			0x00		//	B		*/
