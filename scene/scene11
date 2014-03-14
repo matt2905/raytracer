@@ -4,7 +4,7 @@ scene
 	camera
 		origin
 			0.0
-			300.0
+			0.0
 			-2500.0
 		rotation
 			0.0
@@ -20,8 +20,8 @@ scene
 			cylinder
 		inter
 			origin
-				-1000.0
-				-1000.0
+				-10000.0
+				-10000.0
 				0.0
 			rotation
 				1.0
@@ -29,28 +29,44 @@ scene
 				0.0
 			cylinder
 				70.0
-		color
-			0xFF
-			0x00
-			0x00
-	Object
+		material
+			color
+				0xFF
+				0x00
+				0x00
+			light
+				0.5
+				0.2
+				0.1
+				0.0
+				0.0
+				0.0
+	Objects
 		name
 			plane
 		inter
 			rotation
-				0.0
+				1.0
 				1.0
 				0.0
 			plane
 				1.0
-		color
+		material
+			color
 			0xA0
 			0x60
-			0xFF
+				0xFF
+			light
+				0.5
+				0.2
+				0.1
+				0.0
+				0.0
+				0.0
 	Light
 		origin
-			700.0
 			200.0
+			0.0
 			0.0
 		coefficient
 			0.3

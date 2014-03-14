@@ -6,7 +6,7 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/11 10:05:46 by mmartin           #+#    #+#             */
-/*   Updated: 2014/02/12 12:10:31 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/14 16:55:19 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ double				ft_atof(const char *str)
 	res.sign = 1;
 	res.flag = 0;
 	if (!str || !*str)
-		return (0);
+		return (0.0);
 	while (*str == 32 || (*str >= 9 && *str <= 13))
 		str++;
 	if (*str == '-')

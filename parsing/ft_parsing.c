@@ -6,7 +6,7 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/11 15:02:58 by mmartin           #+#    #+#             */
-/*   Updated: 2014/03/03 13:30:43 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/14 20:09:24 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,46 @@
 #include <libft.h>
 #include "ft_rt.h"
 
+static void			ft_get_material_light(t_file **file, t_object *new)
+{
+	*file = (*file)->next;
+	new->material.diffuse = ft_atof((*file)->line);
+	*file = (*file)->next;
+	new->material.specular = ft_atof((*file)->line);
+	*file = (*file)->next;
+	new->material.shininess = ft_atof((*file)->line);
+	*file = (*file)->next;
+	new->material.transparent = ft_atof((*file)->line);
+	*file = (*file)->next;
+	new->material.reflective = ft_atof((*file)->line);
+	*file = (*file)->next;
+	new->material.refraction = ft_atof((*file)->line);
+	*file = (*file)->next;
+}
+
 static void			ft_get_color(t_file **file, t_object *new)
 {
-	if (ft_strcmp((*file)->line, "color") == 0)
+	if (!ft_strcmp((*file)->line, "material"))
 	{
-		if (*file && (*file)->next)
+		*file = (*file)->next;
+		if (!ft_strcmp((*file)->line, "color"))
 		{
 			*file = (*file)->next;
-			new->rgb[0] = ft_atoh((*file)->line);
-		}
-		if (*file && (*file)->next)
-		{
+			new->material.r = ft_atoh((*file)->line);
 			*file = (*file)->next;
-			new->rgb[1] = ft_atoh((*file)->line);
-		}
-		if (*file && (*file)->next)
-		{
+			new->material.g = ft_atoh((*file)->line);
 			*file = (*file)->next;
-			new->rgb[2] = ft_atoh((*file)->line);
+			new->material.b = ft_atoh((*file)->line);
+			*file = (*file)->next;
 		}
+		if (!ft_strcmp((*file)->line, "light"))
+			ft_get_material_light(file, new);
 	}
 }
 
 static void			ft_get_inter(t_file **file, t_object *new, int flag)
 {
-	if (flag == 1 && ft_strcmp((*file)->line, "origin") == 0)
+	if (flag == 1 && !ft_strcmp((*file)->line, "origin"))
 	{
 		*file = (*file)->next;
 		new->pos.x = ft_atof((*file)->line);
@@ -48,7 +63,7 @@ static void			ft_get_inter(t_file **file, t_object *new, int flag)
 		new->pos.z = ft_atof((*file)->line);
 		*file = (*file)->next;
 	}
-	if (flag == 2 && ft_strcmp((*file)->line, "rotation") == 0)
+	if (flag == 2 && !ft_strcmp((*file)->line, "rotation"))
 	{
 		*file = (*file)->next;
 		new->axe.x = ft_atof((*file)->line);
@@ -60,41 +75,26 @@ static void			ft_get_inter(t_file **file, t_object *new, int flag)
 	}
 }
 
-static void			ft_init_object(t_object *new)
-{
-	new->name = NULL;
-	new->type = NULL;
-	new->pos.x = 0.0;
-	new->pos.y = 0.0;
-	new->pos.z = 0.0;
-	new->axe.x = 0.0;
-	new->axe.y = 0.0;
-	new->axe.z = 0.0;
-	new->rgb[0] = 0.0;
-	new->rgb[1] = 0.0;
-	new->rgb[2] = 0.0;
-}
-
 static t_object		ft_new_object(t_file **file)
 {
 	t_object	new;
 
 	ft_init_object(&new);
 	*file = (*file)->next;
-	if (ft_strcmp((*file)->line, "name") == 0)
+	if (!ft_strcmp((*file)->line, "name"))
 	{
 		*file = (*file)->next;
 		new.name = ft_strdup((*file)->line);
 		*file = (*file)->next;
 	}
-	if (ft_strcmp((*file)->line, "inter") == 0)
+	if (!ft_strcmp((*file)->line, "inter"))
 	{
 		*file = (*file)->next;
 		ft_get_inter(file, &new, 1);
 		ft_get_inter(file, &new, 2);
 		new.type = ft_strdup((*file)->line);
 		*file = (*file)->next;
-		if (ft_strcmp((*file)->line, "color") != 0)
+		if (ft_strcmp((*file)->line, "material"))
 		{
 			new.misc = ft_atof((*file)->line);
 			*file = (*file)->next;

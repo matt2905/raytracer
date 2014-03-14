@@ -21,10 +21,18 @@ scene
 				0.0
 			sphere
 				50.0
-		color
-			0xFF
-			0x00
-			0x00
+		material
+			color
+				0xFF
+				0x00
+				0x00
+			light
+				0.5
+				0.2
+				0.1
+				0.0
+				0.0
+				0.0
 	Object
 		name
 			sphere
@@ -35,7 +43,15 @@ scene
 				0.0
 			sphere
 				50.0
-		color
-			0x00
-			0xFF
-			0x00
+		material
+			color
+				0x00
+				0xFF
+				0x00
+			light
+				0.5
+				0.2
+				0.1
+				0.0
+				0.0
+				0.0

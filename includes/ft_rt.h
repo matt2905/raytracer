@@ -6,7 +6,7 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/10 13:52:51 by mmartin           #+#    #+#             */
-/*   Updated: 2014/03/14 11:45:08 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/14 20:09:37 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,31 @@ typedef struct		s_obj
 
 typedef struct		s_vec
 {
-	t_vector		alpha;
-	t_vector		beta;
-	t_vector		gamma;
-	t_vector		delta;
-	t_vector		epsilon;
+	t_vector		a;
+	t_vector		b;
+	t_vector		g;
+	t_vector		d;
+	t_vector		e;
 }					t_vec;
 
 /*
-**		misc	size of ray of sphere
+**		misc	size of ray of sphere or culinder
 **				constant of plane
+**				angle of cone
 */
+
+typedef struct		s_material
+{
+	unsigned int	r;
+	unsigned int	g;
+	unsigned int	b;
+	float			diffuse;
+	float			specular;
+	float			shininess;
+	float			transparent;
+	float			reflective;
+	float			refraction;
+}					t_material;
 
 typedef struct		s_object
 {
@@ -51,7 +65,7 @@ typedef struct		s_object
 	double			misc;
 	char			*name;
 	char			*type;
-	unsigned int	rgb[3];
+	t_material		material;
 }					t_object;
 
 typedef struct		s_camera
@@ -97,8 +111,12 @@ typedef struct		s_tab_obj
 	double			(* func)(t_object, t_vector, t_vector);
 }					t_tab_obj;
 
+void			ft_raytracing(t_data *d);
+double			ft_find_inter(t_data *d, int *i);
+void			ft_find_color(double alpha, t_data *d, int i);
+
 /*
-**		for parsing
+**	parsing
 */
 
 typedef struct		s_file
@@ -110,24 +128,41 @@ typedef struct		s_file
 t_file			*ft_init(t_file **file, t_data *d, char *str);
 void			ft_parsing(t_file *file, t_data *d);
 void			ft_get_light(t_file *file, t_data *d);
-void			ft_add_file(t_file **file, char *line);
-
-void			ft_raytracing(t_data *d);
-double			ft_find_inter(t_data *d, int *i);
-void			ft_find_color(double alpha, t_data *d, int i);
 
 /*
-**		objects
+**			ft_struct.c
 */
 
-double			ft_cone(t_object obj, t_vector dir, t_vector o);
+void			ft_add_file(t_file **file, char *line);
+void			ft_init_object(t_object *new);
+
+/*
+**	objects
+*/
+
 double			ft_plane(t_object obj, t_vector dir, t_vector o);
 double			ft_sphere(t_object obj, t_vector dir, t_vector o);
+
+/*
+**			ft_cylinder.c
+*/
+
 double			ft_cylinder(t_object obj, t_vector dir, t_vector o);
 t_vector		ft_get_normal_cylinder(t_object obj, t_vector inter);
 
 /*
-**		ft_vec_ope.c
+**			ft_cone.c
+*/
+
+double			ft_cone(t_object obj, t_vector dir, t_vector o);
+t_vector		ft_get_normal_cone(t_object obj, t_vector inter);
+
+/*
+**	vector
+*/
+
+/*
+**			ft_vec_ope.c
 */
 
 t_vector		ft_vector_add(t_vector a, t_vector b);
@@ -137,7 +172,7 @@ t_vector		ft_vector_mult(t_vector a, double b);
 t_vector		ft_vector_wedge(t_vector a, t_vector b);
 
 /*
-**		ft_vec_tools.c
+**			ft_vec_tools.c
 */
 
 t_vector		ft_vector_normalize(t_vector v);
@@ -147,7 +182,7 @@ t_vector		ft_vector_intercept(t_vector v, t_vector o, double alpha);
 double			ft_find_alpha(t_vector o, t_vector inter);
 
 /*
-**		ft_vec_rotation.c
+**			ft_vec_rotation.c
 */
 
 t_vector		ft_vector_rotation_x(t_vector v, double alpha);

@@ -21,7 +21,15 @@ scene
 				0.0		//	Z		*/
 			sphere
 				100		//	ray
-		color
-			0xFF		//	R		/*
-			0x00		//	G		**		0 to 255
-			0x00		//	B		*/
+		material
+			color
+				0xFF	//	R		/*
+				0x00	//	G		**		0 to 255
+				0x00	//	B		*/
+			light
+				0.5		//	color diffuse
+				0.2		//	color specular
+				0.1		//	shininess
+				0.0		//	transparent
+				0.0		//	reflective
+				0.0		//	refraction

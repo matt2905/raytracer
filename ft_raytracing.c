@@ -6,7 +6,7 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/12 13:28:21 by mmartin           #+#    #+#             */
-/*   Updated: 2014/03/03 15:55:56 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/14 16:58:07 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void			ft_raytracing(t_data *d)
 	while (++y <= d->height)
 	{
 		x = -1;
-		while (++x <= d->width)
+		while (++x < d->width)
 		{
 			ft_search_inter(d, (float)x + 0.5, (float)y + 0.5);
 			ft_put_pixel_to_image(d, x, d->height - y);
