@@ -6,7 +6,7 @@
 #    By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/10 13:43:05 by mmartin           #+#    #+#              #
-#    Updated: 2014/02/16 10:00:53 by mmartin          ###   ########.fr        #
+#    Updated: 2014/03/03 14:05:59 by mmartin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,26 +18,29 @@ export	CFLAGS	=	-Wall -Werror -Wextra -g
 
 export	INC		=	-I $(PWD)/libft/includes
 
-NAME		=	rt_v1
+NAME		=	rt
 
 INC			+=	-I includes
 
-SRC			=	main.c				\
-				ft_obj.c			\
-				ft_struct.c			\
-				ft_camera.c			\
-				ft_parsing.c		\
-				ft_vec_ope.c		\
-				ft_vec_tools.c		\
-				ft_get_light.c		\
-				ft_raytracing.c		\
-				ft_find_inter.c		\
-				ft_find_color.c		\
-				ft_vec_rotation.c	\
+SRC			=	main.c					\
+				ft_struct.c				\
+				ft_camera.c				\
+				ft_parsing.c			\
+				ft_vec_ope.c			\
+				ft_vec_tools.c			\
+				ft_get_light.c			\
+				ft_raytracing.c			\
+				ft_find_inter.c			\
+				ft_find_color.c			\
+				ft_vec_rotation.c		\
+				objects/ft_cone.c		\
+				objects/ft_plane.c		\
+				objects/ft_sphere.c		\
+				objects/ft_cylinder.c	\
 
 OBJ			=	$(SRC:.c=.o)
 
-HEAD		=	includes/ft_rtv1.h
+HEAD		=	includes/ft_rt.h
 
 LIB			=	-L ./ -lft -L /usr/X11/lib -lmlx -lXext -lX11
 

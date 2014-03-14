@@ -6,12 +6,12 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/13 13:45:39 by mmartin           #+#    #+#             */
-/*   Updated: 2014/02/16 13:23:29 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/14 10:54:05 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "ft_rtv1.h"
+#include "ft_rt.h"
 
 t_vector	ft_vector_intercept(t_vector v, t_vector o, double alpha)
 {
@@ -21,6 +21,18 @@ t_vector	ft_vector_intercept(t_vector v, t_vector o, double alpha)
 	new.y = v.y * alpha + o.y;
 	new.z = v.z * alpha + o.z;
 	return (new);
+}
+
+double		ft_find_alpha(t_vector v, t_vector o, t_vector inter)
+{
+	double		alpha;
+	t_vector	sub;
+
+	(void)v;
+	sub = ft_vector_sub(o, inter);
+	sub = ft_vector_normalize(sub);
+	alpha = sqrt(ft_vector_dot(sub, sub));
+	return (alpha);
 }
 
 t_vector	ft_vector_normalize(t_vector v)

@@ -6,7 +6,7 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 14:24:37 by mmartin           #+#    #+#             */
-/*   Updated: 2014/02/11 18:50:05 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/14 11:20:02 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct		s_atof
 double			ft_atof(const char *str);
 unsigned int	ft_atoh(const char *str);
 int				ft_atoi(const char *str);
+unsigned long	ft_atoul(const char *str, int base);
 void			ft_bzero(void *s, size_t n);
 void			ft_free_tab(char ***tab);
 int				ft_isalnum(int c);
@@ -47,7 +48,10 @@ int				ft_isalpha(int c);
 int				ft_isascii(int c);
 int				ft_isdigit(int c);
 int				ft_ishexa(int c);
+int				ft_isoctale(int c);
 int				ft_isprint(int c);
+int				ft_isspace(int c);
+int				ft_isupper(int c);
 char			*ft_itoa(long int n, int sys);
 unsigned int	ft_itob(unsigned int n);
 t_list			*ft_lstnew(void const *content, size_t content_size);
@@ -96,6 +100,7 @@ char			**ft_strsplit_space(char *s);
 char			*ft_strstr(const char *s1, const char *s2);
 char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_strtrim(char const *s);
+char			**ft_tabdup(char **tab);
 size_t			ft_tablen(char **tab);
 int				ft_tolower(int c);
 int				ft_toupper(int c);

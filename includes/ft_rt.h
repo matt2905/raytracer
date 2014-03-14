@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rtv1.h                                          :+:      :+:    :+:   */
+/*   ft_rt.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/10 13:52:51 by mmartin           #+#    #+#             */
-/*   Updated: 2014/02/16 18:54:19 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/14 10:24:08 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_RTV1_H
-# define FT_RTV1_H
+#ifndef FT_RT_H
+# define FT_RT_H
 
 typedef struct		s_vector
 {
@@ -20,7 +20,7 @@ typedef struct		s_vector
 	double			z;
 }					t_vector;
 
-typedef struct		s_sphere
+typedef struct		s_obj
 {
 	double			a;
 	double			b;
@@ -28,7 +28,16 @@ typedef struct		s_sphere
 	float			delta;
 	float			alpha1;
 	float			alpha2;
-}					t_sphere;
+}					t_obj;
+
+typedef struct		s_vec
+{
+	t_vector		alpha;
+	t_vector		beta;
+	t_vector		gamma;
+	t_vector		delta;
+	t_vector		epsilon;
+}					t_vec;
 
 /*
 **		misc	size of ray of sphere
@@ -98,22 +107,24 @@ typedef struct		s_file
 	char			*line;
 }					t_file;
 
-void			ft_init(t_file **file, t_data *d, char *str);
+t_file			*ft_init(t_file **file, t_data *d, char *str);
 void			ft_parsing(t_file *file, t_data *d);
 void			ft_get_light(t_file *file, t_data *d);
 void			ft_add_file(t_file **file, char *line);
+
 void			ft_raytracing(t_data *d);
 double			ft_find_inter(t_data *d, int *i);
 void			ft_find_color(double alpha, t_data *d, int i);
 
 /*
-**		ft_obj.c
+**		objects
 */
 
 double			ft_cone(t_object obj, t_vector dir, t_vector o);
-double			ft_cylinder(t_object obj, t_vector dir, t_vector o);
 double			ft_plane(t_object obj, t_vector dir, t_vector o);
 double			ft_sphere(t_object obj, t_vector dir, t_vector o);
+double			ft_cylinder(t_object obj, t_vector dir, t_vector o);
+t_vector		ft_get_normal_cylinder(t_object obj, t_vector inter);
 
 /*
 **		ft_vec_ope.c
@@ -122,7 +133,7 @@ double			ft_sphere(t_object obj, t_vector dir, t_vector o);
 t_vector		ft_vector_add(t_vector a, t_vector b);
 double			ft_vector_dot(t_vector a, t_vector b);
 t_vector		ft_vector_sub(t_vector a, t_vector b);
-t_vector		ft_vector_mult(t_vector a, t_vector b);
+t_vector		ft_vector_mult(t_vector a, double b);
 t_vector		ft_vector_wedge(t_vector a, t_vector b);
 
 /*
@@ -133,13 +144,14 @@ t_vector		ft_vector_normalize(t_vector v);
 t_vector		ft_vector_copy(t_vector v);
 t_vector		ft_vector_neg(t_vector v);
 t_vector		ft_vector_intercept(t_vector v, t_vector o, double alpha);
+double			ft_find_alpha(t_vector v, t_vector o, t_vector inter);
 
 /*
 **		ft_vec_rotation.c
 */
 
-t_vector		ft_vector_rotation_x(t_vector v, int alpha);
-t_vector		ft_vector_rotation_y(t_vector v, int alpha);
-t_vector		ft_vector_rotation_z(t_vector v, int alpha);
+t_vector		ft_vector_rotation_x(t_vector v, double alpha);
+t_vector		ft_vector_rotation_y(t_vector v, double alpha);
+t_vector		ft_vector_rotation_z(t_vector v, double alpha);
 
 #endif

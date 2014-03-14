@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_obj.c                                           :+:      :+:    :+:   */
+/*   ft_sphere.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/02/13 14:25:19 by mmartin           #+#    #+#             */
-/*   Updated: 2014/02/16 18:30:24 by mmartin          ###   ########.fr       */
+/*   Created: 2014/03/03 14:02:38 by mmartin           #+#    #+#             */
+/*   Updated: 2014/03/08 18:15:23 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "ft_rtv1.h"
+#include "ft_rt.h"
 
 double		ft_sphere(t_object obj, t_vector dir, t_vector o)
 {
 	t_vector	tmp;
-	t_sphere	s;
+	t_obj		s;
 
 	tmp = ft_vector_sub(obj.pos, o);
 	s.a = ft_vector_dot(dir, dir);
@@ -37,40 +37,4 @@ double		ft_sphere(t_object obj, t_vector dir, t_vector o)
 			return (s.alpha2);
 	}
 	return (HUGE_VAL);
-}
-
-double		ft_plane(t_object obj, t_vector dir, t_vector o)
-{
-	double		a;
-	double		b;
-	double		alpha;
-
-	a = ft_vector_dot(obj.axe, dir);
-	if (a == 0)
-		return (HUGE_VAL);
-	else
-	{
-		b = ft_vector_dot(obj.axe, o) + obj.misc;
-		alpha = -b / a;
-		if (alpha > 0.02 && alpha < HUGE_VAL)
-			return (alpha);
-		else
-			return (HUGE_VAL);
-	}
-}
-
-double		ft_cylinder(t_object obj, t_vector dir, t_vector o)
-{
-	(void)obj;
-	(void)dir;
-	(void)o;
-	return (0.0);
-}
-
-double		ft_cone(t_object obj, t_vector dir, t_vector o)
-{
-	(void)obj;
-	(void)dir;
-	(void)o;
-	return (0.0);
 }

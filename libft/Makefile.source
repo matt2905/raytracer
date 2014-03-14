@@ -6,13 +6,14 @@
 #    By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/03 14:00:31 by mmartin           #+#    #+#              #
-#    Updated: 2014/02/11 18:48:50 by mmartin          ###   ########.fr        #
+#    Updated: 2014/03/14 11:21:12 by mmartin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC_LIB		=	ft_atof.c			\
 				ft_atoh.c			\
 				ft_atoi.c			\
+				ft_atoul.c			\
 				ft_bzero.c			\
 				ft_free_tab.c		\
 				ft_isalnum.c		\
@@ -20,7 +21,10 @@ SRC_LIB		=	ft_atof.c			\
 				ft_isascii.c		\
 				ft_isdigit.c		\
 				ft_ishexa.c			\
+				ft_isoctale.c		\
 				ft_isprint.c		\
+				ft_isspace.c		\
+				ft_isupper.c		\
 				ft_itoa.c			\
 				ft_itob.c			\
 				ft_lstnew.c			\
@@ -69,6 +73,7 @@ SRC_LIB		=	ft_atof.c			\
 				ft_strstr.c			\
 				ft_strsub.c			\
 				ft_strtrim.c		\
+				ft_tabdup.c			\
 				ft_tablen.c			\
 				ft_tolower.c		\
 				ft_toupper.c		\

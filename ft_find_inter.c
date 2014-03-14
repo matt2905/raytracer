@@ -6,21 +6,21 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/13 14:11:16 by mmartin           #+#    #+#             */
-/*   Updated: 2014/02/16 17:13:15 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/07 15:22:08 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include <string.h>
 #include <libft.h>
-#include "ft_rtv1.h"
+#include "ft_rt.h"
 
 const t_tab_obj		g_obj[5] =
 {
 	{"sphere", ft_sphere},
 	{"plane", ft_plane},
 	{"cone", ft_cone},
-	{"cylindre", ft_cylinder},
+	{"cylinder", ft_cylinder},
 	{NULL, NULL}
 };
 

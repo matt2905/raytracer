@@ -6,14 +6,14 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/12 13:28:21 by mmartin           #+#    #+#             */
-/*   Updated: 2014/02/16 19:01:01 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/03 15:55:56 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include <math.h>
 #include <libft.h>
-#include "ft_rtv1.h"
+#include "ft_rt.h"
 
 static void		ft_search_inter(t_data *d, float x, float y)
 {
@@ -27,14 +27,15 @@ static void		ft_search_inter(t_data *d, float x, float y)
 	target.x = x - (float)d->width / 2.0;
 	target.y = y - (float)d->height / 2.0;
 	target.z = fabs(d->width / (2.0 * tan(M_PI * (d->fov / 2.0) / 180.0)));
+	target = ft_vector_rotation_x(target, d->cam.rot.x);
+	target = ft_vector_rotation_y(target, d->cam.rot.y);
+	target = ft_vector_rotation_z(target, d->cam.rot.z);
 	d->cam.dir = ft_vector_sub(d->cam.pos, target);
 	d->cam.dir = ft_vector_normalize(d->cam.dir);
 	if ((alpha = ft_find_inter(d, &i)) != HUGE_VAL)
 	{
 		ft_find_color(alpha, d, i);
-		color += (int)d->r << 16;
-		color += (int)d->g << 8;
-		color += (int)d->b;
+		color = color + ((int)d->r << 16) + ((int)d->g << 8) + (int)d->b;
 	}
 	color = mlx_get_color_value(d->mlx, color);
 	d->r = (color & 0xFF0000) / 65536;

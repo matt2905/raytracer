@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_struct.c                                        :+:      :+:    :+:   */
+/*   ft_tabdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/02/11 13:28:40 by mmartin           #+#    #+#             */
-/*   Updated: 2014/03/03 15:41:49 by mmartin          ###   ########.fr       */
+/*   Created: 2014/03/04 17:48:38 by mmartin           #+#    #+#             */
+/*   Updated: 2014/03/05 10:27:57 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <libft.h>
-#include "ft_rt.h"
+#include "libft.h"
 
-static t_file	*ft_new_line(char *line)
+char	**ft_tabdup(char **tab)
 {
-	t_file	*new;
-	char	*tmp;
+	int		len;
+	int		i;
+	char	**new;
 
-	new = (t_file *)malloc(sizeof(t_file));
-	new->next = NULL;
-	tmp = line;
-	while (ft_isprint(*tmp) == 0)
-		tmp++;
-	new->line = ft_strdup(tmp);
-	free(line);
+	i = -1;
+	len = ft_tablen(tab);
+	if ((new = (char **)malloc(sizeof(char *) * (len + 1))) == NULL)
+		return (NULL);
+	while (++i < len)
+		new[i] = ft_strdup(tab[i]);
+	new[i] = NULL;
 	return (new);
-}
-
-void			ft_add_file(t_file **file, char *line)
-{
-	if (*file == NULL)
-		*file = ft_new_line(line);
-	else
-		ft_add_file(&((*file)->next), line);
 }

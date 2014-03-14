@@ -6,11 +6,11 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/15 14:07:32 by mmartin           #+#    #+#             */
-/*   Updated: 2014/02/15 15:52:37 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/08 17:33:01 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_rtv1.h"
+#include "ft_rt.h"
 
 double		ft_vector_dot(t_vector a, t_vector b)
 {
@@ -42,13 +42,13 @@ t_vector	ft_vector_sub(t_vector a, t_vector b)
 	return (new);
 }
 
-t_vector	ft_vector_mult(t_vector a, t_vector b)
+t_vector	ft_vector_mult(t_vector a, double b)
 {
 	t_vector	new;
 
-	new.x = a.x * b.x;
-	new.y = a.y * b.y;
-	new.z = a.z * b.z;
+	new.x = a.x * b;
+	new.y = a.y * b;
+	new.z = a.z * b;
 	return (new);
 }
 

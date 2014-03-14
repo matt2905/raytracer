@@ -6,24 +6,24 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/16 09:43:42 by mmartin           #+#    #+#             */
-/*   Updated: 2014/02/16 20:04:05 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/14 10:48:48 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include <libft.h>
-#include "ft_rtv1.h"
-
-extern t_tab_obj	g_obj[5];
+#include "ft_rt.h"
 
 static t_vector		ft_get_normal(t_object obj, t_vector inter)
 {
 	t_vector	normal;
 
 	if (ft_strcmp(obj.type, "sphere") == 0)
-		normal = ft_vector_sub(obj.pos, inter);
+		normal = ft_vector_sub(inter, obj.pos);
+	else if (ft_strcmp(obj.type, "cylinder") == 0)
+		normal = ft_get_normal_cylinder(obj, inter);
 	else
-		normal = obj.axe;
+		normal = ft_vector_neg(obj.axe);
 	normal = ft_vector_normalize(normal);
 	return (normal);
 }
@@ -53,28 +53,26 @@ static void			ft_get_color(t_object obj, t_data *d, int i, t_vector n)
 		d->b = 255;
 }
 
-static int			ft_search_inter(t_data *d, int i, int obj, t_vector o)
+static int			ft_search_inter(t_data *d, int i, double alpha_inter)
 {
-	int			k;
-	int			j;
-	double		alpha;
-	t_vector	v;
+	extern t_tab_obj	g_obj[5];
+	int					k;
+	int					j;
+	double				alpha;
+	t_vector			v;
 
 	j = -1;
 	v = d->lights[i].dir;
 	while (++j < d->nb_objects)
 	{
 		k = -1;
-		if (j != obj)
+		while (g_obj[++k].type != NULL)
 		{
-			while (g_obj[++k].type != NULL)
+			if (ft_strcmp(d->objects[j].type, g_obj[k].type) == 0)
 			{
-				if (ft_strcmp(d->objects[j].type, g_obj[k].type) == 0)
-				{
-					alpha = g_obj[k].func(d->objects[j], v, o);
-					if (alpha > 0.0 && alpha < HUGE_VAL)
-						return (1);
-				}
+				alpha = g_obj[k].func(d->objects[j], v, d->lights[i].pos);
+				if (alpha > 0.02 && alpha < alpha_inter)
+					return (1);
 			}
 		}
 	}
@@ -93,6 +91,7 @@ void				ft_find_color(double alpha, t_data *d, int obj)
 	int				i;
 	t_vector		inter;
 	t_vector		normal;
+	double			alpha_inter;
 
 	i = -1;
 	d->r = d->objects[obj].rgb[0];
@@ -104,7 +103,8 @@ void				ft_find_color(double alpha, t_data *d, int obj)
 	{
 		d->lights[i].dir = ft_vector_sub(d->lights[i].pos, inter);
 		d->lights[i].dir = ft_vector_normalize(d->lights[i].dir);
-		if (ft_search_inter(d, i, obj, d->lights[i].pos) == 0)
+		alpha_inter = ft_find_alpha(d->lights[i].dir, d->lights[i].pos, inter);
+		if (ft_search_inter(d, i, alpha_inter) == 0)
 			ft_get_color(d->objects[obj], d, i, normal);
 		else
 			ft_get_shadow(d);

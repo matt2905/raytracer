@@ -1,11 +1,15 @@
 scene
 	name
-		scene9
+		scene11
 	camera
 		origin
 			0.0
-			500.0
+			300.0
 			-2500.0
+		rotation
+			0.0
+			0.0
+			0.0
 	render
 		mlx_all_objects
 			2560
@@ -13,14 +17,18 @@ scene
 			60
 	Object
 		name
-			sphere
+			cylinder
 		inter
 			origin
+				-1000.0
+				-1000.0
 				0.0
+			rotation
+				1.0
+				1.0
 				0.0
-				0.0
-			sphere
-				100
+			cylinder
+				70.0
 		color
 			0xFF
 			0x00
@@ -36,13 +44,13 @@ scene
 			plane
 				1.0
 		color
-			0x00
-			0x00
+			0xA0
+			0x60
 			0xFF
 	Light
 		origin
+			400.0
 			0.0
-			500.0
 			0.0
 		coefficient
 			0.8

@@ -6,13 +6,13 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/16 10:01:02 by mmartin           #+#    #+#             */
-/*   Updated: 2014/02/16 18:55:44 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/03 13:32:29 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <libft.h>
-#include "ft_rtv1.h"
+#include "ft_rt.h"
 
 static void		ft_init_light(t_light *new)
 {

@@ -6,13 +6,13 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/11 15:02:58 by mmartin           #+#    #+#             */
-/*   Updated: 2014/02/16 19:36:46 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/03 13:30:43 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <libft.h>
-#include "ft_rtv1.h"
+#include "ft_rt.h"
 
 static void			ft_get_color(t_file **file, t_object *new)
 {
