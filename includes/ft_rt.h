@@ -6,7 +6,7 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/10 13:52:51 by mmartin           #+#    #+#             */
-/*   Updated: 2014/03/14 10:24:08 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/14 11:45:08 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ t_vector		ft_vector_normalize(t_vector v);
 t_vector		ft_vector_copy(t_vector v);
 t_vector		ft_vector_neg(t_vector v);
 t_vector		ft_vector_intercept(t_vector v, t_vector o, double alpha);
-double			ft_find_alpha(t_vector v, t_vector o, t_vector inter);
+double			ft_find_alpha(t_vector o, t_vector inter);
 
 /*
 **		ft_vec_rotation.c

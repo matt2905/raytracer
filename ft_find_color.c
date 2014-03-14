@@ -6,7 +6,7 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/16 09:43:42 by mmartin           #+#    #+#             */
-/*   Updated: 2014/03/14 10:48:48 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/14 12:00:40 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void			ft_get_color(t_object obj, t_data *d, int i, t_vector n)
 		d->b = 255;
 }
 
-static int			ft_search_inter(t_data *d, int i, double alpha_inter)
+static int			ft_search_inter(t_data *d, int i, double alpha_i, int obj)
 {
 	extern t_tab_obj	g_obj[5];
 	int					k;
@@ -66,13 +66,16 @@ static int			ft_search_inter(t_data *d, int i, double alpha_inter)
 	while (++j < d->nb_objects)
 	{
 		k = -1;
-		while (g_obj[++k].type != NULL)
+		if (j != obj)
 		{
-			if (ft_strcmp(d->objects[j].type, g_obj[k].type) == 0)
+			while (g_obj[++k].type != NULL)
 			{
-				alpha = g_obj[k].func(d->objects[j], v, d->lights[i].pos);
-				if (alpha > 0.02 && alpha < alpha_inter)
-					return (1);
+				if (ft_strcmp(d->objects[j].type, g_obj[k].type) == 0)
+				{
+					alpha = g_obj[k].func(d->objects[j], v, d->lights[i].pos);
+					if (alpha > 0.02 && alpha < alpha_i - 0.1)
+						return (1);
+				}
 			}
 		}
 	}
@@ -103,8 +106,8 @@ void				ft_find_color(double alpha, t_data *d, int obj)
 	{
 		d->lights[i].dir = ft_vector_sub(d->lights[i].pos, inter);
 		d->lights[i].dir = ft_vector_normalize(d->lights[i].dir);
-		alpha_inter = ft_find_alpha(d->lights[i].dir, d->lights[i].pos, inter);
-		if (ft_search_inter(d, i, alpha_inter) == 0)
+		alpha_inter = ft_find_alpha(d->lights[i].pos, inter);
+		if (!ft_search_inter(d, i, alpha_inter, obj))
 			ft_get_color(d->objects[obj], d, i, normal);
 		else
 			ft_get_shadow(d);

@@ -34,7 +34,7 @@ scene
 				1.0
 				0.0
 			plane
-				1.0
+				10.0
 		color
 			0x00
 			0x00

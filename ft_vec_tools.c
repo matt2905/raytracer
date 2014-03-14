@@ -6,7 +6,7 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/13 13:45:39 by mmartin           #+#    #+#             */
-/*   Updated: 2014/03/14 10:54:05 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/14 11:45:18 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,12 @@ t_vector	ft_vector_intercept(t_vector v, t_vector o, double alpha)
 	return (new);
 }
 
-double		ft_find_alpha(t_vector v, t_vector o, t_vector inter)
+double		ft_find_alpha(t_vector o, t_vector inter)
 {
 	double		alpha;
 	t_vector	sub;
 
-	(void)v;
-	sub = ft_vector_sub(o, inter);
-	sub = ft_vector_normalize(sub);
+	sub = ft_vector_sub(inter, o);
 	alpha = sqrt(ft_vector_dot(sub, sub));
 	return (alpha);
 }

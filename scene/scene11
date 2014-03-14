@@ -49,11 +49,11 @@ scene
 			0xFF
 	Light
 		origin
-			400.0
-			0.0
+			700.0
+			200.0
 			0.0
 		coefficient
-			0.8
+			0.3
 		color
 			0xFF
 			0xFF

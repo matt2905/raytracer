@@ -1,6 +1,6 @@
 scene
 	name
-		scene9
+		scene10
 	camera
 		origin
 			0.0
@@ -46,10 +46,10 @@ scene
 	Light
 		origin
 			400.0
-			645.0
-			-200.0
+			200.0
+			0.0
 		coefficient
-			0.8
+			0.3
 		color
 			0xFF
 			0xFF
