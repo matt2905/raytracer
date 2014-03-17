@@ -39,7 +39,7 @@ scene
 			-645.0
 			-300.0
 		coefficient
-			0.8
+			1.0
 		color
 			0x00
 			0xFF

@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_plane.c                                         :+:      :+:    :+:   */
+/*   ft_check_float.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/03 14:03:25 by mmartin           #+#    #+#             */
-/*   Updated: 2014/03/17 18:29:12 by mmartin          ###   ########.fr       */
+/*   Created: 2014/03/17 19:08:44 by mmartin           #+#    #+#             */
+/*   Updated: 2014/03/17 20:17:44 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
-#include "ft_rt.h"
+#include <libft.h>
 
-double		ft_plane(t_object obj, t_vector dir, t_vector o)
+int		ft_check_float(char *str)
 {
-	double		a;
-	double		b;
-	double		alpha;
+	int		i;
+	int		flag;
+	int		p;
 
-	obj.axe = ft_vector_normalize(obj.axe);
-	a = ft_vector_dot(obj.axe, dir);
-	if (a == 0)
-		return (HUGE_VAL);
-	else
+	i = 0;
+	flag = 0;
+	while (str && str[i] && ft_isspace(str[i]))
+		i++;
+	p = i;
+	while (flag < 2 && str && str[i])
 	{
-		b = ft_vector_dot(obj.axe, o) + obj.misc;
-		alpha = -b / a;
-		if (alpha > 0.02 && alpha < HUGE_VAL)
-			return (alpha);
-		else
-			return (HUGE_VAL);
+		if (!ft_isdigit(str[i]) && str[i] != '.')
+			flag = 2;
+		if (str[i] == '.')
+			flag++;
+		i++;
 	}
+	if (p == i - 1)
+		return (0);
+	return (1);
 }

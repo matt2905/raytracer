@@ -6,7 +6,7 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/10 13:52:51 by mmartin           #+#    #+#             */
-/*   Updated: 2014/03/14 20:09:37 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/17 19:21:48 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,6 @@ typedef struct		s_vec
 	t_vector		e;
 }					t_vec;
 
-/*
-**		misc	size of ray of sphere or culinder
-**				constant of plane
-**				angle of cone
-*/
-
 typedef struct		s_material
 {
 	unsigned int	r;
@@ -58,11 +52,19 @@ typedef struct		s_material
 	float			refraction;
 }					t_material;
 
+/*
+**		misc	size of ray of sphere or cylinder
+**				constant of plane
+**				angle of cone or hyperboloid
+**		hyp		constant of hyperboloid
+*/
+
 typedef struct		s_object
 {
 	t_vector		pos;
 	t_vector		axe;
 	double			misc;
+	double			hyp;
 	char			*name;
 	char			*type;
 	t_material		material;
@@ -114,6 +116,7 @@ typedef struct		s_tab_obj
 void			ft_raytracing(t_data *d);
 double			ft_find_inter(t_data *d, int *i);
 void			ft_find_color(double alpha, t_data *d, int i);
+int				ft_check_float(char *str);
 
 /*
 **	parsing
@@ -158,6 +161,12 @@ double			ft_cone(t_object obj, t_vector dir, t_vector o);
 t_vector		ft_get_normal_cone(t_object obj, t_vector inter);
 
 /*
+**			ft_hypberboloid.c
+*/
+
+double			ft_hyperboloid(t_object obj, t_vector dir, t_vector o);
+
+/*
 **	vector
 */
 
@@ -175,8 +184,8 @@ t_vector		ft_vector_wedge(t_vector a, t_vector b);
 **			ft_vec_tools.c
 */
 
+t_vector		ft_vector_project(t_vector a, t_vector b);
 t_vector		ft_vector_normalize(t_vector v);
-t_vector		ft_vector_copy(t_vector v);
 t_vector		ft_vector_neg(t_vector v);
 t_vector		ft_vector_intercept(t_vector v, t_vector o, double alpha);
 double			ft_find_alpha(t_vector o, t_vector inter);

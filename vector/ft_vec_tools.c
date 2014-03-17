@@ -6,7 +6,7 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/13 13:45:39 by mmartin           #+#    #+#             */
-/*   Updated: 2014/03/14 11:45:18 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/17 17:04:56 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,16 @@ t_vector	ft_vector_neg(t_vector v)
 	return (new);
 }
 
-t_vector	ft_vector_copy(t_vector v)
+t_vector	ft_vector_project(t_vector a, t_vector b)
 {
 	t_vector	new;
+	double		ab;
+	double		bb;
 
-	new.x = v.x;
-	new.y = v.y;
-	new.z = v.z;
+	ab = ft_vector_dot(a, b);
+	bb = ft_vector_dot(b, b);
+	new.x = b.x * ab / bb;
+	new.y = b.y * ab / bb;
+	new.z = b.z * ab / bb;
 	return (new);
 }

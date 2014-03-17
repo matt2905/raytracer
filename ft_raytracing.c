@@ -6,7 +6,7 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/12 13:28:21 by mmartin           #+#    #+#             */
-/*   Updated: 2014/03/14 16:58:07 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/16 14:21:38 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,18 @@ static void		ft_search_inter(t_data *d, float x, float y)
 
 static void		ft_put_pixel_to_image(t_data *d, int x, int y)
 {
-	d->data[y * d->sizeline + x * d->bpp / 8] = d->b;
-	d->data[y * d->sizeline + x * d->bpp / 8 + 1] = d->g;
-	d->data[y * d->sizeline + x * d->bpp / 8 + 2] = d->r;
+	if (d->endian == 0)
+	{
+		d->data[y * d->sizeline + x * d->bpp / 8] = d->b;
+		d->data[y * d->sizeline + x * d->bpp / 8 + 1] = d->g;
+		d->data[y * d->sizeline + x * d->bpp / 8 + 2] = d->r;
+	}
+	else
+	{
+		d->data[y * d->sizeline + x * d->bpp / 8] = d->r;
+		d->data[y * d->sizeline + x * d->bpp / 8 + 1] = d->g;
+		d->data[y * d->sizeline + x * d->bpp / 8 + 2] = d->b;
+	}
 }
 
 void			ft_raytracing(t_data *d)

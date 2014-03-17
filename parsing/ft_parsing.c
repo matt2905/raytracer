@@ -6,7 +6,7 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/11 15:02:58 by mmartin           #+#    #+#             */
-/*   Updated: 2014/03/14 20:09:24 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/17 20:17:55 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void			ft_get_inter(t_file **file, t_object *new, int flag)
 		new->pos.z = ft_atof((*file)->line);
 		*file = (*file)->next;
 	}
-	if (flag == 2 && !ft_strcmp((*file)->line, "rotation"))
+	else if (flag == 2 && !ft_strcmp((*file)->line, "rotation"))
 	{
 		*file = (*file)->next;
 		new->axe.x = ft_atof((*file)->line);
@@ -73,6 +73,8 @@ static void			ft_get_inter(t_file **file, t_object *new, int flag)
 		new->axe.z = ft_atof((*file)->line);
 		*file = (*file)->next;
 	}
+	else if (flag == 3 && (new->type = ft_strdup((*file)->line)))
+		new->misc = ft_atof((*file = (*file)->next)->line);
 }
 
 static t_object		ft_new_object(t_file **file)
@@ -81,19 +83,19 @@ static t_object		ft_new_object(t_file **file)
 
 	ft_init_object(&new);
 	*file = (*file)->next;
-	if (!ft_strcmp((*file)->line, "name"))
+	if (!ft_strcmp((*file)->line, "name") && (*file = (*file)->next))
 	{
-		*file = (*file)->next;
 		new.name = ft_strdup((*file)->line);
 		*file = (*file)->next;
 	}
-	if (!ft_strcmp((*file)->line, "inter"))
+	if (!ft_strcmp((*file)->line, "inter") && (*file = (*file)->next))
 	{
-		*file = (*file)->next;
 		ft_get_inter(file, &new, 1);
 		ft_get_inter(file, &new, 2);
-		new.type = ft_strdup((*file)->line);
-		*file = (*file)->next;
+		ft_get_inter(file, &new, 3);
+		new.hyp = ft_atof((*file = (*file)->next)->line);
+		if (ft_check_float((*file)->line))
+			*file = (*file)->next;
 		if (ft_strcmp((*file)->line, "material"))
 		{
 			new.misc = ft_atof((*file)->line);

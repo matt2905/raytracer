@@ -6,7 +6,7 @@
 #    By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/10 13:43:05 by mmartin           #+#    #+#              #
-#    Updated: 2014/03/14 19:35:18 by mmartin          ###   ########.fr        #
+#    Updated: 2014/03/17 19:16:03 by mmartin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRC			=	main.c					\
 				ft_raytracing.c			\
 				ft_find_inter.c			\
 				ft_find_color.c			\
+				ft_check_float.c		\
 				vector/ft_vec_ope.c		\
 				vector/ft_vec_tools.c	\
 				vector/ft_vec_rotation.c\
@@ -37,6 +38,7 @@ SRC			=	main.c					\
 				objects/ft_plane.c		\
 				objects/ft_sphere.c		\
 				objects/ft_cylinder.c	\
+				objects/ft_hyperboloid.c\
 
 OBJ			=	$(SRC:.c=.o)
 

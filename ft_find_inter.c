@@ -6,7 +6,7 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/13 14:11:16 by mmartin           #+#    #+#             */
-/*   Updated: 2014/03/07 15:22:08 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/17 19:23:27 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 #include <libft.h>
 #include "ft_rt.h"
 
-const t_tab_obj		g_obj[5] =
+const t_tab_obj		g_obj[6] =
 {
 	{"sphere", ft_sphere},
 	{"plane", ft_plane},
 	{"cone", ft_cone},
 	{"cylinder", ft_cylinder},
+	{"hyperboloid", ft_hyperboloid},
 	{NULL, NULL}
 };
 
