@@ -6,7 +6,7 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/10 13:52:51 by mmartin           #+#    #+#             */
-/*   Updated: 2014/03/17 19:21:48 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/18 16:48:35 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,19 @@ typedef struct		s_tab_obj
 
 void			ft_raytracing(t_data *d);
 double			ft_find_inter(t_data *d, int *i);
+
+/*
+**	color
+*/
+
 void			ft_find_color(double alpha, t_data *d, int i);
-int				ft_check_float(char *str);
+
+/*
+**			ft_color_tools.c
+*/
+
+void			ft_color_normalize(t_data *d);
+void			ft_coef_color(t_object obj, t_data *d, int i, t_vector n);
 
 /*
 **	parsing
@@ -131,6 +142,7 @@ typedef struct		s_file
 t_file			*ft_init(t_file **file, t_data *d, char *str);
 void			ft_parsing(t_file *file, t_data *d);
 void			ft_get_light(t_file *file, t_data *d);
+int				ft_check_float(char *str);
 
 /*
 **			ft_struct.c

@@ -4,7 +4,7 @@ scene
 	camera
 		origin
 			0.0
-			0.0
+			300.0
 			-2500.0
 		rotation
 			0.0
@@ -41,12 +41,12 @@ scene
 				0.0
 				0.0
 				0.0
-	Objects
+	Object
 		name
 			plane
 		inter
 			rotation
-				1.0
+				0.0
 				1.0
 				0.0
 			plane
@@ -57,7 +57,7 @@ scene
 			0x60
 				0xFF
 			light
-				0.5
+				1.0
 				0.2
 				0.1
 				0.0
@@ -65,8 +65,8 @@ scene
 				0.0
 	Light
 		origin
-			200.0
-			0.0
+			400.0
+			100.0
 			0.0
 		coefficient
 			1.0

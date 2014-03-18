@@ -6,7 +6,7 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 14:05:21 by mmartin           #+#    #+#             */
-/*   Updated: 2014/03/17 17:53:40 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/18 16:54:04 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,11 @@ double			ft_cylinder(t_object obj, t_vector dir, t_vector o)
 
 t_vector		ft_get_normal_cylinder(t_object obj, t_vector inter)
 {
-	t_vector	normal;
 	t_vector	tmp;
 	t_vector	sub;
 
 	sub = ft_vector_sub(obj.pos, inter);
 	obj.axe = ft_vector_normalize(obj.axe);
-	tmp = ft_vector_sub(sub, ft_vector_project(sub, obj.axe));
-	normal.x = tmp.x + fabs(tmp.x);
-	normal.y = tmp.y + fabs(tmp.y);
-	normal.z = tmp.z + fabs(tmp.z);
-	return (normal);
+	tmp = ft_vector_sub(ft_vector_project(sub, obj.axe), sub);
+	return (ft_vector_neg(tmp));
 }

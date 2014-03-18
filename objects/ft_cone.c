@@ -6,7 +6,7 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 14:05:00 by mmartin           #+#    #+#             */
-/*   Updated: 2014/03/17 19:36:53 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/18 15:46:32 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,17 @@ static t_obj	ft_find_coef(t_object obj, t_vector dir, t_vec v)
 	t_obj		c;
 	double		alpha;
 	double		beta;
+	double		b;
+	double		a;
 
 	obj.misc = M_PI * obj.misc / 180.0;
+	a = pow(cos(obj.misc), 2);
+	b = pow(sin(obj.misc), 2);
 	alpha = ft_vector_dot(dir, obj.axe);
 	beta = ft_vector_dot(v.d, obj.axe);
-	c.a = pow(cos(obj.misc), 2) * ft_vector_dot(v.b, v.b);
-	c.a -= pow(sin(obj.misc), 2) * pow(alpha, 2);
-	c.b = 2 * (pow(cos(obj.misc), 2) * ft_vector_dot(v.e, v.b));
-	c.b -= 2 * (pow(sin(obj.misc), 2) * alpha * beta);
-	c.c = pow(cos(obj.misc), 2) * ft_vector_dot(v.e, v.e);
-	c.c -= pow(sin(obj.misc), 2) * pow(beta, 2);
+	c.a = a * ft_vector_dot(v.b, v.b) - b * pow(alpha, 2);
+	c.b = 2 * (a * ft_vector_dot(v.e, v.b)) - 2 * (b * alpha * beta);
+	c.c = a * ft_vector_dot(v.e, v.e) - b * pow(beta, 2);
 	return (c);
 }
 

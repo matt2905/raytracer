@@ -24,7 +24,7 @@ scene
 				1.0
 				0.0
 			cone
-				40.0
+				50.0
 		material
 			color
 				0xFF

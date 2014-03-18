@@ -61,7 +61,7 @@ scene
 			500.0
 			0.0
 		coefficient
-			0.8
+			1.0
 		color
 			0xFF
 			0xFF
