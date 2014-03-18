@@ -6,7 +6,7 @@
 #    By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/10 13:43:05 by mmartin           #+#    #+#              #
-#    Updated: 2014/03/18 16:46:28 by mmartin          ###   ########.fr        #
+#    Updated: 2014/03/18 17:36:49 by mmartin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC			=	main.c					\
 				ft_find_inter.c			\
 				color/ft_find_color.c	\
 				color/ft_color_tools.c	\
+				color/ft_calcul_lights.c\
 				objects/ft_cone.c		\
 				objects/ft_plane.c		\
 				objects/ft_sphere.c		\

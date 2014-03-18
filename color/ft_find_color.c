@@ -6,7 +6,7 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/16 09:43:42 by mmartin           #+#    #+#             */
-/*   Updated: 2014/03/18 16:53:54 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/18 19:18:54 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ void				ft_find_color(double alpha, t_data *d, int obj)
 	double			alpha_inter;
 
 	i = -1;
-	d->r = 0;
-	d->g = 0;
-	d->b = 0;
+	d->r = d->objects[obj].material.r * 0.2;
+	d->g = d->objects[obj].material.g * 0.2;
+	d->b = d->objects[obj].material.b * 0.2;
 	inter = ft_vector_intercept(d->cam.dir, d->cam.pos, alpha);
 	normal = ft_get_normal(d->objects[obj], inter);
 	while (++i < d->nb_lights)
@@ -89,8 +89,5 @@ void				ft_find_color(double alpha, t_data *d, int obj)
 		else
 			ft_get_shadow(d);
 	}
-	d->r += d->objects[obj].material.r * 0.2;
-	d->g += d->objects[obj].material.g * 0.2;
-	d->b += d->objects[obj].material.b * 0.2;
 	ft_color_normalize(d);
 }

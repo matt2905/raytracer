@@ -6,7 +6,7 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/10 13:52:51 by mmartin           #+#    #+#             */
-/*   Updated: 2014/03/18 16:48:35 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/18 19:04:07 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@ typedef struct		s_vector
 	double			y;
 	double			z;
 }					t_vector;
+
+typedef struct		s_coef
+{
+	double			r;
+	double			g;
+	double			b;
+}					t_coef;
 
 typedef struct		s_obj
 {
@@ -128,6 +135,13 @@ void			ft_find_color(double alpha, t_data *d, int i);
 
 void			ft_color_normalize(t_data *d);
 void			ft_coef_color(t_object obj, t_data *d, int i, t_vector n);
+
+/*
+**
+*/
+
+double			ft_diffuse_light(t_object obj, t_light light, t_vector n);
+double			ft_specular_light(t_object, t_light, t_vector, t_vector);
 
 /*
 **	parsing
