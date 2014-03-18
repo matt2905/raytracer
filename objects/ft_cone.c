@@ -6,7 +6,7 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 14:05:00 by mmartin           #+#    #+#             */
-/*   Updated: 2014/03/18 15:46:32 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/18 20:39:12 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,18 @@ double			ft_cone(t_object obj, t_vector dir, t_vector o)
 t_vector		ft_get_normal_cone(t_object obj, t_vector inter)
 {
 	t_vector	normal;
-	t_vector	tmp;
 	t_vector	sub;
+	t_vector	tangente;
+	double		dot;
 
 	sub = ft_vector_sub(obj.pos, inter);
+	sub = ft_vector_normalize(sub);
 	obj.axe = ft_vector_normalize(obj.axe);
-	tmp = ft_vector_project(sub, obj.axe);
-	normal = sub;
+	if ((dot = ft_vector_dot(sub, obj.axe)) > 0.0)
+		tangente = ft_vector_wedge(obj.axe, sub);
+	else
+		tangente = ft_vector_wedge(sub, obj.axe);
+	tangente = ft_vector_normalize(tangente);
+	normal = ft_vector_wedge(sub, tangente);
 	return (normal);
 }
