@@ -6,7 +6,7 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/10 13:52:51 by mmartin           #+#    #+#             */
-/*   Updated: 2014/03/18 19:04:07 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/22 18:20:09 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ typedef struct		s_tab_obj
 
 void			ft_raytracing(t_data *d);
 double			ft_find_inter(t_data *d, int *i);
+void			ft_destroy_data(t_data *d);
 
 /*
 **	color

@@ -6,7 +6,7 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/16 09:43:42 by mmartin           #+#    #+#             */
-/*   Updated: 2014/03/18 19:18:54 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/19 18:24:01 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static t_vector		ft_get_normal(t_object obj, t_vector inter)
 	else if (!ft_strcmp(obj.type, "cylinder"))
 		normal = ft_get_normal_cylinder(obj, inter);
 	else if (!ft_strcmp(obj.type, "cone"))
+		normal = ft_get_normal_cone(obj, inter);
+	else if (!ft_strcmp(obj.type, "hyperboloid"))
 		normal = ft_get_normal_cone(obj, inter);
 	else
 		normal = ft_vector_neg(obj.axe);
@@ -74,9 +76,9 @@ void				ft_find_color(double alpha, t_data *d, int obj)
 	double			alpha_inter;
 
 	i = -1;
-	d->r = d->objects[obj].material.r * 0.2;
-	d->g = d->objects[obj].material.g * 0.2;
-	d->b = d->objects[obj].material.b * 0.2;
+	d->r = d->objects[obj].material.r * d->objects[obj].material.shininess;
+	d->g = d->objects[obj].material.g * d->objects[obj].material.shininess;
+	d->b = d->objects[obj].material.b * d->objects[obj].material.shininess;
 	inter = ft_vector_intercept(d->cam.dir, d->cam.pos, alpha);
 	normal = ft_get_normal(d->objects[obj], inter);
 	while (++i < d->nb_lights)

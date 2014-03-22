@@ -6,7 +6,7 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/10 13:52:27 by mmartin           #+#    #+#             */
-/*   Updated: 2014/03/03 15:55:48 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/22 18:24:04 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,15 @@
 #include <libft.h>
 #include "ft_rt.h"
 
-static int		ft_key_hook(int keycode)
+static int		ft_key_hook(int keycode, t_data *d)
 {
 	if (keycode == 65307)
+	{
+		mlx_destroy_image(d->mlx, d->img);
+		mlx_destroy_window(d->mlx, d->win);
+		ft_destroy_data(d);
 		exit(EXIT_SUCCESS);
+	}
 	return (1);
 }
 
@@ -61,7 +66,7 @@ int				main(int argc, char **argv)
 
 	file = NULL;
 	if (argc != 2)
-		ft_putendl_fd("Usage: ./rt_v1 <scene>", 2);
+		ft_putendl_fd("Usage: ./rt scene", 2);
 	else
 	{
 		tmp = ft_init(&file, &d, argv[1]);
@@ -69,7 +74,7 @@ int				main(int argc, char **argv)
 		ft_get_light(file, &d);
 		if ((d.mlx = mlx_init()) == NULL)
 			return (-1);
-		d.win = mlx_new_window(d.mlx, d.width, d.height, "RTv1");
+		d.win = mlx_new_window(d.mlx, d.width, d.height, "RT");
 		d.img = mlx_new_image(d.mlx, d.width, d.height);
 		ft_get_data(&d);
 		ft_free_file(tmp);

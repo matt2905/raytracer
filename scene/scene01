@@ -29,7 +29,7 @@ scene
 			light
 				0.8		//	color diffuse
 				1.0		//	color specular
-				0.1		//	shininess
+				0.4		//	shininess
 				0.0		//	transparent
 				0.0		//	reflective
 				0.0		//	refraction

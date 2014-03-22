@@ -6,7 +6,7 @@
 #    By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/10 13:43:05 by mmartin           #+#    #+#              #
-#    Updated: 2014/03/18 17:36:49 by mmartin          ###   ########.fr        #
+#    Updated: 2014/03/22 18:24:29 by mmartin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ include		libft/Makefile.source
 
 export	CC		=	gcc
 
-export	CFLAGS	=	-Wall -Werror -Wextra -g
+export	CFLAGS	=	-Wall -Werror -Wextra -O3 -g
 
 export	INC		=	-I $(PWD)/libft/includes
 
@@ -25,6 +25,7 @@ INC			+=	-I includes
 SRC			=	main.c					\
 				ft_raytracing.c			\
 				ft_find_inter.c			\
+				ft_destroy_data.c		\
 				color/ft_find_color.c	\
 				color/ft_color_tools.c	\
 				color/ft_calcul_lights.c\
@@ -74,6 +75,7 @@ clean:
 
 fclean:		clean
 	@/bin/rm -f $(NAME)
+	@/bin/rm -rf $(NAME).dSYM
 	@echo "\033[31m"rt : delete"\033[0m"
 	@Make fclean -C libft
 

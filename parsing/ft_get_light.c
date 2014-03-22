@@ -6,7 +6,7 @@
 /*   By: mmartin <mmartin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/16 10:01:02 by mmartin           #+#    #+#             */
-/*   Updated: 2014/03/03 13:32:29 by mmartin          ###   ########.fr       */
+/*   Updated: 2014/03/22 18:20:38 by mmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,8 @@ void			ft_get_light(t_file *file, t_data *d)
 			d->nb_lights++;
 		tmp = tmp->next;
 	}
-	d->lights = (t_light *)malloc(sizeof(t_light) * d->nb_lights);
+	if (d->nb_lights)
+		d->lights = (t_light *)malloc(sizeof(t_light) * d->nb_lights);
 	while (file)
 	{
 		if (ft_strcmp(file->line, "Light") == 0)

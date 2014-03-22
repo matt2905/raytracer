@@ -25,7 +25,7 @@ scene
 				0.0
 			hyperboloid
 				40.0
-				500.0
+				-500.0
 		material
 			color
 				0xFF
@@ -34,7 +34,7 @@ scene
 			light
 				0.8
 				1.0
-				0.1
+				0.2
 				0.0
 				0.0
 				0.0
@@ -55,16 +55,16 @@ scene
 				0xFF
 			light
 				0.8
-				1.0
-				0.1
+				0.0
+				0.4
 				0.0
 				0.0
 				0.0
 	Light
 		origin
-			700.0
 			200.0
-			0.0
+			200.0
+			-200.0
 		coefficient
 			1.0
 		color
