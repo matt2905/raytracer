@@ -54,14 +54,14 @@ scene
 				0xFF
 			light
 				0.8
-				1.0
+				0.0
 				0.4
 				0.0
 				0.0
 				0.0
 	Light
 		origin
-			700.0
+			350.0
 			200.0
 			0.0
 		coefficient
