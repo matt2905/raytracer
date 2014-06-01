@@ -7,9 +7,11 @@ grâce a la minilibix : une librairie graphique simplifié de la X11.
 Utilisation
 ===========
 
-Compilation avec Make <br/>
+Compilation avec Make<br/>
 
-Excution via la commande: ./rt <code><scene></code><br/>
+Excution via la commande: ./rt "scene"<br/>
+
+Differentes scenes sont fournies sont dans le dossier scene.<br/>
 
 <br/>
 Figure 1: <br/>
