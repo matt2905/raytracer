@@ -17,7 +17,6 @@
 
 static int		ft_key_hook(int keycode, t_data *d)
 {
-	(void)d;
 	if (keycode == 65307)
 	{
 		mlx_destroy_image(d->mlx, d->img);
